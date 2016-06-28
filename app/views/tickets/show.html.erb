@@ -1,12 +1,11 @@
 <!-- Display an individual ticket details -->
-<h2><%=@ticket.subject%></h2>
+<h2><%=@ticket['subject']%></h2>
 
-ticket.priority
-ticket.status
-ticket.created_at
+<p>
+  Created: <%=@ticket['created_at']%>  - Last updated: <%=@ticket['updated_at']%><BR /><BR />
+  Ticket id: <%=@ticket['id']%></br>
+  Ticket Status: <%=@ticket['status']%></br><Br />
+  Description of Ticket: <%=@ticket['description']%></br>
+</p><BR />
 
-
-<button>Back</button>
-
-
-<!-- GET /api/v2/tickets/{id}.json -->
+<%= link_to 'Back', :back %>

@@ -1,0 +1,54 @@
+Internship Coding Challenge Zendesk Ticket Viewer
+Zendesk is a customer service tool that allows the creation and management of support tickets. Your company needs you to build a Ticket Viewer that will:
+● Connect to the Zendesk API >> Request all the tickets for your account
+● Display them in a list >> Page through tickets when more than 25 are returned
+● Display individual ticket details >> show
+
+Non­functional requirements:
+● Include a README with installation and usage instructions
+● The UI can be browser­based or CLI (see example output below)
+● The amount of data you display in the bulk ticket view and the single ticket view is up to
+you
+● How you format and display the ticket data is up to you, just ensure it is easy to read
+● The Ticket Viewer should handle the API being unavailable
+● There should be some attempt at testing
+● Submissions will be accepted up till 9am on Monday the 4th of July. Any submissions or
+commits made after this time will be ignored. Submission can be done either:
+○ Via Github ­ email the link to submission@mel­internship.zendesk.com. Ensure
+the repo is public. T his is the preferred method of submission. Meaningful
+commits will be looked upon favourably.
+○ Via email ­ zip up the project and email to
+submission@mel­internship.zendesk.com.  Resources:
+● I n t e r n S l a c k C h a n n e l :  z e n d e s k ­ m e l b ­ i n t e r n s . s l a c k . c o m .   A s k q u e s t i o n s o f t h e Melbourne Engineering team. The channel will only be active during Melbourne work hours (approximately 8am to 6pm).
+
+Criteria for Assessment
+● Meets requirements:
+○ No extra features are added.
+○ All required features have been attempted.
+● Displays some knowledge of application design:
+○ Separation of concerns.
+○ Simplicity.
+● Handles basic errors:
+○ Displays a friendly error message if the API is unavailable or the response is invalid.
+○ Tells the user something is wrong if there is a program error.
+● Includes tests.
+● UI is easy to use and displays ticket results clearly.
+● Code demonstrates:
+○ Consistency.
+○ Adherence to common standards.
+Getting Started
+● Sign up for a free trial with Zendesk: h ttps://zendesk.com/. You’ll need to pick an account name. Take note of this, you’ll need it later.
+● Take a look at the Zendesk Ticket API Documentation: https://developer.zendesk.com/rest_api/docs. Here you’ll find instructions on how to connect to the API and make requests for tickets.
+● Send your account name to Adel Smee on Slack (@adel). She’ll populate your account with a few hundred tickets to give you some data to work with.
+Gotchas
+● Do Not Use J avascript in the browser (running on Node is fine). You won’t be able to successfully complete a GET request as we prevent cross­domain requests.
+● Remember that even though the response comes back as JSON format it is still just a string and needs to be parsed to be of any use to you.
+● Use basic authentication.
+
+Sample Output
+Note: These are really basic samples only and not to be taken as prescriptive. We encourage you to format the ticket output in your own way.
+Sample CLI
+
+Sample Static Website
+
+#Testing - does it return 404. Does info come back properly. 

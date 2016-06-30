@@ -10,7 +10,8 @@
   Last updated: <%= @ticket.updated_at.strftime("%I:%M:%p on %A %d %B %Y") %>
 </div>
 
-Description of Ticket: <br><br><%= @ticket.description %><br><br>
-
+<div class="description_of_ticket">
+  Description of Ticket: <br><br><%= @ticket.description %>
+</div>
 
 <%= link_to 'Back', :back, class: 'btn btn-default' %>

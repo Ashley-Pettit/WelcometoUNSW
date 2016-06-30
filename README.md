@@ -47,6 +47,7 @@ This was a technical test done for zendesk. It involves connecting to the zendes
 7. In your browser navigate to 'http://localhost:3000/'
 8. You can play around with the program here.
 9. To see how the program functions with the API offline you can turn off your internet and do the same.
+10. To run tests - rspec spec/controllers/tickets_controller_spec.rb
 
 Note it's a little slow due to the nature of constantly fetching data. I didn't want
 to overcomplicate the solution by looking into caching or a database
@@ -61,12 +62,14 @@ to overcomplicate the solution by looking into caching or a database
 
 - If the program doesn't run please try again in a minute.
 
-The program is designed to handle the api being offline however, rate-limiting can affect the loading of this application.  
+- It's unlikely however, if the rails server is backed up with requests it may be necessary to kill the server.
 
-- If the rails server is backed up with requests it may be necessary to kill the server.
- - use { lsof -wni tcp:3000 } in your terminal to see which process used 3000 port and get the process pid). This will return the address which you need to kill below
+How to kill the server if necessary
+- use { lsof -wni tcp:3000 } in your terminal to see which process used 3000 port and get the process pid). This will return the address which you need to kill below
  - The command to stop the server is { kill -9 {address} }
 
 ## HAVE FUN!
+
+Example usage of offline API
 
 <img src = "Zendesk_offline.png"/>

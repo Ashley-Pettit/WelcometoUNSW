@@ -18,11 +18,11 @@ class TicketsController < ApplicationController
     @ticket = client.tickets.find(id: params[:id])
     #Handling an invalid ticket
     if @ticket.nil?
-      flash[:alert] = "Sorry this ticket could not be found"
+      flash[:error] = "Sorry this ticket could not be found"
       redirect_to root_path
     end
   end
-  
+
   private
 
   #Configuration requirements to login to the Zendesk API

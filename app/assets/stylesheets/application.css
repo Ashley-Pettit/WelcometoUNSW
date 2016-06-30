@@ -71,7 +71,7 @@ header {
 	margin-left:2rem
 }
 
-.ticket_id_and_status, .ticket_time_details {
+.ticket_id_and_status, .ticket_time_details, .description_of_ticket {
   margin-bottom:2rem;
 }
 

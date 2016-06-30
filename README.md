@@ -6,6 +6,21 @@ The most exciting console app you'll ever find! (Other than the toy-robot)
 
 This was a technical test done for zendesk. It involves connecting to the zendesk ticketing API and then showing the results in the format of all tickets and then one particular ticket.
 
+###HOW TO RUN
+
+1. Download this repo by clicking the download as zip button
+2. Unzip the file
+4. Ensure you have at least v2.2.2 of ruby installed. You can check by running ruby -v in your terminal/console. Ruby can be downloaded at https://www.ruby-lang.org/en/downloads/
+5. With ruby installed navigate to the downloaded unzipped file with your terminal
+6. Once in the folder type ruby 'rails s' to start the servers
+7. In your browser navigate to 'http://localhost:3000/'
+8. You can play around with the program here.
+9. To see how the program functions with the API offline you can turn off your internet and do the same.
+10. To run tests - rspec spec/controllers/tickets_controller_spec.rb
+
+Note it's a little slow due to the nature of constantly fetching data. I didn't want
+to overcomplicate the solution by looking into caching or a database
+
 ###REQUIREMENTS AND BASIC APPROACH
 
 ######Connect to the zendesk API
@@ -35,22 +50,6 @@ This was a technical test done for zendesk. It involves connecting to the zendes
 - This is a contentious solution. I like it however, I know not everyone like rescue statements!  
 - I feel this is highly unlikely in it's use to hide an error.
 - The other considered solution was to render an alert saying 'zendesk_offline'
-
-
-###HOW TO RUN
-
-1. Download this repo by clicking the download as zip button
-2. Unzip the file
-4. Ensure you have at least v2.2.2 of ruby installed. You can check by running ruby -v in your terminal/console. Ruby can be downloaded at https://www.ruby-lang.org/en/downloads/
-5. With ruby installed navigate to the downloaded unzipped file with your terminal
-6. Once in the folder type ruby 'rails s' to start the servers
-7. In your browser navigate to 'http://localhost:3000/'
-8. You can play around with the program here.
-9. To see how the program functions with the API offline you can turn off your internet and do the same.
-10. To run tests - rspec spec/controllers/tickets_controller_spec.rb
-
-Note it's a little slow due to the nature of constantly fetching data. I didn't want
-to overcomplicate the solution by looking into caching or a database
 
 ###CHALLENGES
 

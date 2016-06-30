@@ -6,13 +6,13 @@ The most exciting console app you'll ever find! (Other than the toy-robot)
 
 This was a technical test done for zendesk. It involves connecting to the zendesk ticketing API and then showing the results in the format of all tickets and then one particular ticket.
 
-####REQUIREMENTS AND BASIC APPROACH
+###REQUIREMENTS AND BASIC APPROACH
 
-1. Connect to the zendesk API
+######Connect to the zendesk API
 - The Zendesk ruby gem was used to connect to the API.
 - Initially I was going to use HTTParty however, the gem was simpler and I figured best to use Zendesk's own code
 
-2. List out all 100 results.
+######List out all 100 results.
 - This was done used a method called 'index'.
 - Index was chosen as the name as to follow RESTful design
 - This method calls the Zendesk API - returns the results to the index controller and stores them as @tickets. The view 'tickets/index' then iterates through the results using the .each method.
@@ -37,7 +37,7 @@ This was a technical test done for zendesk. It involves connecting to the zendes
 - The other considered solution was to render an alert saying 'zendesk_offline'
 
 
-##HOW TO RUN
+###HOW TO RUN
 
 1. Download this repo by clicking the download as zip button
 2. Unzip the file
@@ -51,8 +51,10 @@ This was a technical test done for zendesk. It involves connecting to the zendes
 Note it's a little slow due to the nature of constantly fetching data. I didn't want
 to overcomplicate the solution by looking into caching or a database
 
-##CHALLENGES
+###CHALLENGES
 
 - Learning rspec properly :)
 - Learning about error handling
 - Learning how to use the 'will_paginate' gem
+
+## HAVE FUN!

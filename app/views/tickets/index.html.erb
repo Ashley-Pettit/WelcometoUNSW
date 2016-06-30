@@ -1,17 +1,21 @@
 <h2>Your Current Tickets</h2>
 
-<%@tickets.each do |ticket|%>
+<% if @tickets.present? %>
+  <% @tickets.each do |ticket| %>
+    <%= link_to ticket_path(ticket.id) do %>
+      <h3 id="ticket_title"><%= ticket.subject %></h3>
+    <% end %>
 
-<a href="/tickets/<%=ticket['id']%>"> <h3 id="event_title"><%=ticket['subject']%></h3></a>
+    <div class="description"><%= ticket.description %></div>
+  <% end %>
 
-   <div style="margin-left:2rem">
-      <%=ticket['description']%>
-   </div>
-
+<% else %>
+  <h3>Sorry this service is presently offline</h3>
 <% end %>
 
 <%= will_paginate @tickets %>
 
 <!-- TO DO
 TESTING
-NICE STYLING -->
+Clean up code
+NICE STYLING CSS -->

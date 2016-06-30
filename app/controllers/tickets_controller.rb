@@ -1,39 +1,47 @@
+require 'will_paginate/array'
+
 class TicketsController < ApplicationController
+  #HANDLE API BEING OFFLINE
+  rescue_from ZendeskAPI::Error::NetworkError, with: :zendesk_offline
 
-  #view all => get '/ticket' #show a maximum of 25 tickets.
   def index
-    # Should this actually make a database or is that overcomplicating the problem?
-
-    # @tickets = Ticket.all OR
-    # OR @tickets = insert here the api call
-    # *Remember to handle the api if offline.
-
-    #For Testing only
-
-    #basic auth >> Don't use O auth
-    #how to ask for a ticket
-
-
-    @tickets = ['ticket1', 'ticket2']
-
-    @tickets_page = Post.paginate(:page => params[:page])
-    or, use an explicit "per page" limit:
-    Post.paginate(:page => params[:page], :per_page => 25)
-
-    ## render page links in the view:
-    <%= will_paginate @posts %>
-
-
+    @tickets = client.tickets.to_a!
+    #Using will_paginate to make pages
+    @tickets = @tickets.paginate(page: params[:page], per_page: 25)
   end
 
-  # view one => get '/ticket/:id'
+
   def show
-    if true #id exist
-      # show the ticket
-      @ticket = params[:id]
-    else #id doesn't exist
-      # render 404 error
+    @ticket = client.tickets.find(id: params[:id])
+
+    #HANDLE INVALID ID
+    if @ticket.nil?
+      flash[:alert] = "Sorry this ticket could not be found"
+      redirect_to root_path
     end
   end
 
+  #This method is used purely to see the results of the API
+  def test
+    render :json => client.tickets
+  end
+
+  private
+
+  def client
+    ZendeskAPI::Client.new do |config|
+      config.username = "ashley@digital380.com.au"
+      config.password = "676800Ash"
+      config.url = "https://kings-landing.zendesk.com/api/v2"
+    end
+  end
+
+  def zendesk_offline
+    render :zendesk_offline
+  end
+
 end
+
+#Alternate way without Zendesk gem
+
+# response = HTTParty.get("#{client_instance}/api/v2/tickets/#{ticket_id}.json", :basic_auth => basic_auth_details)

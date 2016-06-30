@@ -1,11 +1,12 @@
 <!-- Display an individual ticket details -->
-<h2><%=@ticket['subject']%></h2>
+<h2 id ="ticket_title"><%= @ticket.subject %></h2>
 
 <p>
-  Created: <%=@ticket['created_at']%>  - Last updated: <%=@ticket['updated_at']%><BR /><BR />
-  Ticket id: <%=@ticket['id']%></br>
-  Ticket Status: <%=@ticket['status']%></br><Br />
-  Description of Ticket: <%=@ticket['description']%></br>
-</p><BR />
+  <div>Created: <%= @ticket.created_at %>  - Last updated: <%= @ticket.updated_at %></div>
+  <br><br>
+  Ticket id: <%= @ticket.id %><br>
+  Ticket Status: <%= @ticket.status %><br><br>
+  Description of Ticket: <%= @ticket.description %><br>
+</p><br>
 
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', :back, class: 'btn btn-default' %>

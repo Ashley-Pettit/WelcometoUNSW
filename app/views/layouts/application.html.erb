@@ -2,14 +2,24 @@
 <html>
 <head>
   <title>Zendesk Ticket Tracking System</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1>Zendesk Ticket Tracking System</h1>
+  <header>
+    <h1>Zendesk Ticket Tracking System</h1>
+  </header>
 
-<%= yield %>
+  <div class="error_message">
+    <%= flash[:notice] %>
+  </div>
 
+  <div class='container'>
+
+    <%= yield %>
+
+  </div>
 </body>
 </html>

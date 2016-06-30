@@ -2,11 +2,11 @@
 
 The most exciting console app you'll ever find! (Other than the toy-robot)
 
-#ABOUT
+###ABOUT
 
 This was a technical test done for zendesk. It involves connecting to the zendesk ticketing API and then showing the results in the format of all tickets and then one particular ticket.
 
-##REQUIREMENTS AND BASIC APPROACH
+####REQUIREMENTS AND BASIC APPROACH
 
 1. Connect to the zendesk API
 - The Zendesk ruby gem was used to connect to the API.

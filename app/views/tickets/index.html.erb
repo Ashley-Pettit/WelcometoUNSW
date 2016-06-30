@@ -1,4 +1,4 @@
-<h2>Your Current Tickets</h2>
+<h2 class="page_title">Your Current Tickets</h2>
 
 <% if @tickets.present? %>
   <% @tickets.each do |ticket| %>
@@ -7,15 +7,10 @@
     <% end %>
 
     <div class="description"><%= ticket.description %></div>
-  <% end %>
+  <% end %>.
 
 <% else %>
   <h3>Sorry this service is presently offline</h3>
 <% end %>
 
 <%= will_paginate @tickets %>
-
-<!-- TO DO
-TESTING
-Clean up code
-NICE STYLING CSS -->

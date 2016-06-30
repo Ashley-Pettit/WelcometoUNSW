@@ -1,33 +1,31 @@
 require 'will_paginate/array'
 
 class TicketsController < ApplicationController
-  #HANDLE API BEING OFFLINE
   rescue_from ZendeskAPI::Error::NetworkError, with: :zendesk_offline
 
   def index
+    #to_a! is used to raise an error if the variable does not exist (E.g. API Offline)
     @tickets = client.tickets.to_a!
+    #Hopefully not overengineering but I needed the last updated at the top!
+    @tickets.sort { |a,b| a.updated_at <=> b.updated_at }
     #Using will_paginate to make pages
     @tickets = @tickets.paginate(page: params[:page], per_page: 25)
   end
 
 
   def show
+    #This is calling the client method which uses the zendesk api gem
     @ticket = client.tickets.find(id: params[:id])
-
-    #HANDLE INVALID ID
+    #Handling an invalid ticket
     if @ticket.nil?
       flash[:alert] = "Sorry this ticket could not be found"
       redirect_to root_path
     end
   end
-
-  #This method is used purely to see the results of the API
-  def test
-    render :json => client.tickets
-  end
-
+  
   private
 
+  #Configuration requirements to login to the Zendesk API
   def client
     ZendeskAPI::Client.new do |config|
       config.username = "ashley@digital380.com.au"
@@ -36,12 +34,9 @@ class TicketsController < ApplicationController
     end
   end
 
+  #Handle offline API. Called by the rescue_from method at the top of this controller
   def zendesk_offline
     render :zendesk_offline
   end
 
 end
-
-#Alternate way without Zendesk gem
-
-# response = HTTParty.get("#{client_instance}/api/v2/tickets/#{ticket_id}.json", :basic_auth => basic_auth_details)

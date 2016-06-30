@@ -54,7 +54,19 @@ to overcomplicate the solution by looking into caching or a database
 ###CHALLENGES
 
 - Learning rspec properly :)
-- Learning about error handling
-- Learning how to use the 'will_paginate' gem
+- Working out how to use the 'will_paginate' gem
+- Learning about rails error handling
+
+###TROUBLESHOOTING
+
+- If the program doesn't run please try again in a minute.
+
+The program is designed to handle the api being offline however, rate-limiting can affect the loading of this application.  
+
+- If the rails server is backed up with requests it may be necessary to kill the server.
+ - use { lsof -wni tcp:3000 } in your terminal to see which process used 3000 port and get the process pid). This will return the address which you need to kill below
+ - The command to stop the server is { kill -9 {address} }
 
 ## HAVE FUN!
+
+<img src = "Zendesk_offline.png"/>

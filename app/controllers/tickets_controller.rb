@@ -1,3 +1,5 @@
+#There is extra commenting for the purpose of a technical test :)
+
 require 'will_paginate/array'
 
 class TicketsController < ApplicationController
@@ -5,7 +7,7 @@ class TicketsController < ApplicationController
 
   def index
     #to_a! is used to raise an error if the variable does not exist (E.g. API Offline)
-    @tickets = client.tickets.to_a!
+    @tickets = get_tickets.tickets.to_a!
     #Hopefully not overengineering but I needed the last updated at the top!
     @tickets.sort { |a,b| a.updated_at <=> b.updated_at }
     #Using will_paginate to make pages
@@ -15,7 +17,7 @@ class TicketsController < ApplicationController
 
   def show
     #This is calling the client method which uses the zendesk api gem
-    @ticket = client.tickets.find(id: params[:id])
+    @ticket = get_tickets.tickets.find(id: params[:id])
     #Handling an invalid ticket
     if @ticket.nil?
       flash[:error] = "Sorry this ticket could not be found"
@@ -26,7 +28,7 @@ class TicketsController < ApplicationController
   private
 
   #Configuration requirements to login to the Zendesk API
-  def client
+  def get_tickets
     ZendeskAPI::Client.new do |config|
       config.username = "ashley@digital380.com.au"
       config.password = "676800Ash"
